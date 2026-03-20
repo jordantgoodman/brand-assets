@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>POPS — Lowercase "l" Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&family=Public+Sans:wght@400;700&family=Inter:wght@400;700&family=IBM+Plex+Sans:wght@400;700&family=Archivo:wght@400;700&family=Outfit:wght@400;700&family=Manrope:wght@400;700&family=Albert+Sans:wght@400;700&family=Lexend:wght@400;700&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pops-dark-blue: #1B243C;
+    --pops-gold: #E3C682;
+    --pops-charcoal: #41434B;
+    --pops-pale-blue: #F3F5F6;
+    --pops-medium-gray: #7B7E8A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FAFAF7;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    padding: 48px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .page-header { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #E0E0E0; }
+  .page-header h1 { font-size: 24px; font-weight: 600; color: var(--pops-dark-blue); margin-bottom: 4px; }
+  .page-header p { font-size: 13px; color: var(--pops-medium-gray); line-height: 1.6; }
+
+  .font-row {
+    display: grid;
+    grid-template-columns: 180px 200px 1fr 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid #ECECEC;
+  }
+  .font-row:last-child { border-bottom: none; }
+
+  .font-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pops-dark-blue);
+  }
+  .font-label .sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--pops-medium-gray);
+    margin-top: 2px;
+  }
+  .font-label .tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 6px;
+  }
+  .tag.straight { background: #E8F5E9; color: #2E7D32; }
+  .tag.tailed { background: #FFF3E0; color: #E65100; }
+  .tag.subtle { background: #FFF8E1; color: #F9A825; }
+  .tag.option { background: #E3F2FD; color: #1565C0; }
+
+  .glyph-large {
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--pops-dark-blue);
+    line-height: 1;
+    letter-spacing: 12px;
+  }
+
+  .glyph-words {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--pops-charcoal);
+    line-height: 1.5;
+  }
+
+  .glyph-body {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--pops-charcoal);
+    line-height: 1.75;
+  }
+
+  .section-divider {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--pops-gold);
+    padding: 32px 0 8px;
+    border-bottom: 2px solid var(--pops-gold);
+    margin-bottom: 0;
+  }
+
+  /* Public Sans with stylistic set */
+  .public-ss01 {
+    font-family: 'Public Sans', sans-serif;
+    font-feature-settings: "ss01" 1;
+  }
+
+  .note-box {
+    background: var(--pops-pale-blue);
+    border-left: 3px solid var(--pops-gold);
+    padding: 16px 20px;
+    margin: 32px 0;
+    font-size: 12px;
+    color: var(--pops-charcoal);
+    line-height: 1.7;
+  }
+
+  .page-footer {
+    text-align: center; font-size: 11px; color: #CCC;
+    padding-top: 24px; border-top: 1px solid #F0F0F0;
+    margin-top: 48px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>POPS — Lowercase "l" Audit</h1>
+  <p>Every font at 96px bold showing l I 1 — plus key POPS words at body size. Which "l" reads as institutional authority vs. soft/feminine?</p>
+</div>
+
+<div class="note-box">
+  <strong>The question:</strong> Nearly every modern sans-serif adds a tail or hook to the lowercase "l" for disambiguation from "I" and "1." The tail is a legibility feature — but for POPS, it can read as soft. This page shows the actual glyph so you can judge which fonts cross the line and which are acceptable.
+</div>
+
+<!-- ═══ FONTS WITH TAILED "l" ═══ -->
+<div class="section-divider">Tailed / Hooked "l" — Known Soft</div>
+
+<div class="font-row">
+  <div class="font-label">IBM Plex Sans<span class="sub">Mike Abbink / Bold Monday</span><span class="tag tailed">Curved Tail</span></div>
+  <div class="glyph-large" style="font-family:'IBM Plex Sans',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'IBM Plex Sans',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'IBM Plex Sans',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<!-- ═══ FONTS WITH SUBTLE TAIL ═══ -->
+<div class="section-divider">Subtle Tail — Less Pronounced</div>
+
+<div class="font-row">
+  <div class="font-label">Source Sans 3<span class="sub">Paul Hunt / Adobe</span><span class="tag subtle">Subtle Tail</span></div>
+  <div class="glyph-large" style="font-family:'Source Sans 3',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Source Sans 3',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Source Sans 3',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Public Sans<span class="sub">USWDS (default)</span><span class="tag subtle">Subtle Tail</span></div>
+  <div class="glyph-large" style="font-family:'Public Sans',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Public Sans',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Public Sans',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Inter<span class="sub">Rasmus Andersson</span><span class="tag subtle">Subtle Tail</span></div>
+  <div class="glyph-large" style="font-family:'Inter',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Inter',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Inter',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<!-- ═══ STYLISTIC SET OPTION ═══ -->
+<div class="section-divider">Stylistic Set Alternate — Untailed Option</div>
+
+<div class="font-row">
+  <div class="font-label">Public Sans (ss01)<span class="sub">USWDS — alt glyph</span><span class="tag option">Untailed via CSS</span></div>
+  <div class="glyph-large public-ss01">l I 1</div>
+  <div class="glyph-words public-ss01">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body public-ss01">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<!-- ═══ POTENTIALLY STRAIGHT ═══ -->
+<div class="section-divider">Geometric / Potentially Straighter "l"</div>
+
+<div class="font-row">
+  <div class="font-label">Archivo<span class="sub">Omnibus-Type</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Archivo',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Archivo',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Archivo',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Outfit<span class="sub">Rodrigo Fuenzalida</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Outfit',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Outfit',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Outfit',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Manrope<span class="sub">Mikhail Sharanda</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Manrope',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Manrope',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Manrope',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Albert Sans<span class="sub">Andreas Rasmussen</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Albert Sans',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Albert Sans',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Albert Sans',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Lexend<span class="sub">Thomas Jockin / Google</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Lexend',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Lexend',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Lexend',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="font-row">
+  <div class="font-label">Work Sans<span class="sub">Wei Huang</span><span class="tag straight">Test</span></div>
+  <div class="glyph-large" style="font-family:'Work Sans',sans-serif;">l I 1</div>
+  <div class="glyph-words" style="font-family:'Work Sans',sans-serif;">ligature-resistant<br>facility installation</div>
+  <div class="glyph-body" style="font-family:'Work Sans',sans-serif;">All hardware is ligature-resistant per correctional facility security standards. Installation includes field training.</div>
+</div>
+
+<div class="note-box">
+  <strong>How to read this:</strong> Look at the large "l I 1" glyphs. If the "l" has any curve, tail, or hook at the bottom, it'll be visible at 96px. Then check the body text — does the curve register at 13px, or does it disappear? A font might have a technically curved "l" that reads as straight at body size. The POPS brand needs one that reads as straight at both scales.
+</div>
+
+<div class="page-footer">
+  POPS — Lowercase "l" Audit · March 2026
+</div>
+
+</body>
+</html>
