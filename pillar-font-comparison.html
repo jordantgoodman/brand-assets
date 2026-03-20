@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pillar Booth Font Comparison — Plus Jakarta Sans vs Avenir Next vs Inter</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pb-black-olive: #333F39;
+    --pb-ebony: #5E6956;
+    --pb-light-sage: #C1CBB9;
+    --pb-alabaster: #E0E5DC;
+    --pb-jet: #444444;
+    --pb-anvil: #6B6B6B;
+    --pb-super: #999999;
+    --pb-fog: #F9F9F9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #FAFAF7;
+    color: #333;
+    line-height: 1.6;
+    padding: 48px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #E0E0E0;
+  }
+  .page-header h1 { font-size: 28px; font-weight: 600; color: var(--pb-black-olive); margin-bottom: 4px; }
+  .page-header .subtitle { font-size: 14px; font-weight: 400; color: var(--pb-super); }
+
+  /* ── Grids ── */
+  .tri-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .section-header { margin-bottom: 24px; }
+  .section-header h2 { font-size: 18px; font-weight: 600; color: var(--pb-black-olive); margin-bottom: 4px; }
+  .section-header p { font-size: 13px; color: var(--pb-super); }
+
+  /* ── Font Columns ── */
+  .font-col {
+    background: white;
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid #E8E8E8;
+  }
+
+  .font-col.jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .font-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .font-col.inter { font-family: 'Inter', sans-serif; }
+
+  .font-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #BBB; margin-bottom: 12px;
+  }
+  .font-tag .rec {
+    color: var(--pb-ebony); background: var(--pb-alabaster);
+    padding: 2px 8px; border-radius: 3px; margin-left: 6px; font-size: 9px;
+  }
+  .font-tag .gf {
+    color: #4285F4; background: #E8F0FE;
+    padding: 2px 8px; border-radius: 3px; margin-left: 6px; font-size: 9px;
+  }
+
+  .font-name { font-size: 32px; font-weight: 700; color: var(--pb-black-olive); margin-bottom: 2px; }
+  .font-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: #BBB; margin-bottom: 20px; line-height: 1.5; }
+
+  .weight-row { display: flex; align-items: baseline; gap: 12px; padding: 6px 0; border-bottom: 1px solid #F5F5F5; }
+  .weight-row:last-child { border-bottom: none; }
+  .weight-label { font-family: 'Inter', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #CCC; width: 65px; flex-shrink: 0; }
+  .weight-sample { font-size: 16px; color: #333; }
+
+  /* ── Compatibility ── */
+  .compat-section { margin-bottom: 48px; }
+  .compat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .compat-card { background: white; border-radius: 8px; padding: 24px; border: 1px solid #E8E8E8; }
+  .compat-card h4 { font-size: 14px; font-weight: 600; color: var(--pb-black-olive); margin-bottom: 16px; }
+  .compat-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #F5F5F5; font-size: 12px; }
+  .compat-row:last-child { border-bottom: none; }
+  .compat-label { color: #666; }
+  .compat-status { font-weight: 600; font-size: 11px; }
+  .compat-status.yes { color: #4A8B6E; }
+  .compat-status.partial { color: #B8975C; }
+  .compat-status.no { color: #C47A6E; }
+
+  /* ── Tagline Test ── */
+  .tagline-col {
+    background: var(--pb-black-olive);
+    border-radius: 8px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .tagline-col.jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .tagline-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .tagline-col.inter { font-family: 'Inter', sans-serif; }
+
+  .tagline-col .tl-brand {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--pb-light-sage); margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .tagline-col .tl-main { font-size: 36px; font-weight: 700; color: white; margin-bottom: 8px; letter-spacing: -0.5px; }
+  .tagline-col .tl-sub { font-size: 14px; font-weight: 400; color: var(--pb-light-sage); letter-spacing: 0.3px; }
+
+  /* ── Brand Cards ── */
+  .brand-col {
+    background: var(--pb-alabaster);
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid #E0E0E0;
+  }
+  .brand-col.jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .brand-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .brand-col.inter { font-family: 'Inter', sans-serif; }
+
+  .brand-col .card-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pb-light-sage); margin-bottom: 12px; }
+  .brand-col .card-h1 { font-size: 25px; font-weight: 700; color: var(--pb-black-olive); margin-bottom: 4px; }
+  .brand-col .card-rule { display: block; width: 64px; height: 2px; background: var(--pb-light-sage); margin: 8px 0 12px; }
+  .brand-col .card-h2 { font-size: 16px; font-weight: 600; color: var(--pb-ebony); margin-bottom: 12px; }
+  .brand-col .card-h3 { font-size: 13px; font-weight: 600; color: var(--pb-ebony); margin-bottom: 8px; margin-top: 14px; }
+  .brand-col .card-body { font-size: 13px; font-weight: 400; color: var(--pb-jet); line-height: 1.75; }
+  .brand-col .card-caption { font-size: 11px; color: var(--pb-anvil); line-height: 1.6; margin-top: 12px; }
+  .brand-col .callout {
+    background: white; border-left: 3px solid var(--pb-light-sage);
+    padding: 14px 18px; border-radius: 0 6px 6px 0; margin-top: 14px;
+    font-size: 12px; color: var(--pb-jet); line-height: 1.7;
+  }
+
+  /* ── Size Ladder ── */
+  .size-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; color: #CCC; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 4px; margin-top: 14px;
+  }
+  .size-label:first-of-type { margin-top: 0; }
+
+  .s-25 { font-size: 25px; font-weight: 700; color: var(--pb-black-olive); line-height: 1.3; }
+  .s-16 { font-size: 16px; font-weight: 600; color: var(--pb-ebony); line-height: 1.4; }
+  .s-13 { font-size: 13px; font-weight: 400; color: var(--pb-jet); line-height: 1.75; }
+  .s-11 { font-size: 11px; font-weight: 400; color: var(--pb-jet); line-height: 1.6; }
+  .s-10 { font-size: 10px; font-weight: 400; color: var(--pb-anvil); line-height: 1.6; }
+
+  /* ── Product Slogans ── */
+  .slogan-col {
+    background: white;
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid #E8E8E8;
+  }
+  .slogan-col.jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .slogan-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .slogan-col.inter { font-family: 'Inter', sans-serif; }
+
+  .slogan-item { padding: 10px 0; border-bottom: 1px solid #F3F3F3; }
+  .slogan-item:last-child { border-bottom: none; }
+  .slogan-product { font-size: 15px; font-weight: 700; color: var(--pb-black-olive); margin-bottom: 2px; }
+  .slogan-text { font-size: 13px; font-weight: 400; color: var(--pb-ebony); font-style: italic; }
+
+  /* ── Tables ── */
+  .table-col {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #E8E8E8;
+    overflow-x: auto;
+  }
+  .table-col.jakarta table { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .table-col.avenir table { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .table-col.inter table { font-family: 'Inter', sans-serif; }
+
+  .table-col table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .table-col th {
+    background: var(--pb-black-olive); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .table-col td { padding: 10px 12px; border-bottom: 1px solid #F0F0F0; color: var(--pb-jet); }
+  .table-col tr:nth-child(even) td { background: var(--pb-fog); }
+
+  /* ── DOCX Explainer ── */
+  .explainer {
+    background: white;
+    border-radius: 8px;
+    padding: 32px;
+    border: 1px solid #E8E8E8;
+    border-left: 4px solid #A89A8A;
+    margin-bottom: 48px;
+  }
+  .explainer h2 { font-size: 18px; font-weight: 600; color: #2C3E42; margin-bottom: 16px; }
+  .explainer p { font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer strong { color: #2C3E42; }
+
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .explainer-box {
+    padding: 16px 20px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .explainer-box.good { background: #F4F8F7; border-left: 3px solid #4A8B6E; }
+  .explainer-box.bad { background: #FDF5F4; border-left: 3px solid #C47A6E; }
+  .explainer-box h4 { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+  .explainer-box.good h4 { color: #4A8B6E; }
+  .explainer-box.bad h4 { color: #C47A6E; }
+  .explainer-box p { font-size: 12px; margin-bottom: 0; color: #555; }
+
+  .page-footer {
+    text-align: center; font-size: 11px; color: #CCC;
+    padding-top: 24px; border-top: 1px solid #F0F0F0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Pillar Booth — Font Comparison</h1>
+  <div class="subtitle">Plus Jakarta Sans vs Avenir Next vs Inter · Side-by-side in brand colors and hierarchy · March 2026</div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- CROSS-PLATFORM COMPATIBILITY -->
+<!-- ════════════════════════════ -->
+
+<div class="compat-section">
+  <div class="section-header">
+    <h2>Cross-Platform Compatibility</h2>
+    <p>Licensing, embedding, and rendering across HTML, PDF, and DOCX</p>
+  </div>
+
+  <div class="compat-grid">
+    <div class="compat-card">
+      <h4>Plus Jakarta Sans</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status yes">Free — SIL Open Font License</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status yes">Yes — unrestricted</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status yes">Yes — Google Fonts CDN</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — embed freely (OFL)</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Requires install on machine</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status yes">Yes — one-line embed</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status yes">Yes — weight axis</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status no">No — manual install</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — manual install</span></div>
+    </div>
+
+    <div class="compat-card">
+      <h4>Avenir Next</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status partial">Licensed — Linotype/Monotype</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status partial">macOS system use free; web needs license</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status partial">Needs fallback chain on non-Mac</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — if generated on Mac</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Mac only — falls back on Windows</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status no">No — proprietary</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status no">No — static weights only</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status yes">Yes — ships with macOS</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — not included</span></div>
+    </div>
+
+    <div class="compat-card">
+      <h4>Inter</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status yes">Free — SIL Open Font License</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status yes">Yes — unrestricted</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status yes">Yes — Google Fonts CDN</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — embed freely</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Requires install on machine</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status yes">Yes — one-line embed</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status yes">Yes — weight + optical size</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status no">No — manual install</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — manual install</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- WEIGHT SPECIMENS -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Weight Specimens</h2>
+  <p>All available weights with brand tagline</p>
+</div>
+
+<div class="tri-grid">
+  <div class="font-col jakarta">
+    <div class="font-tag">Plus Jakarta Sans <span class="rec">Recommended</span><span class="gf">Google Fonts</span></div>
+    <div class="font-name">Plus Jakarta Sans</div>
+    <div class="font-meta">Tokotype, 2020 · Free (SIL OFL) · Variable · Google Fonts</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Semi 600</div><div class="weight-sample" style="font-weight:600;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">ExtraBold 800</div><div class="weight-sample" style="font-weight:800;">Pause the noise.</div></div>
+  </div>
+
+  <div class="font-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="font-name">Avenir Next</div>
+    <div class="font-meta">Frutiger & Kobayashi, 2004 · Licensed (Linotype) · macOS system font</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Demi 600</div><div class="weight-sample" style="font-weight:600;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Heavy 800</div><div class="weight-sample" style="font-weight:800;">Pause the noise.</div></div>
+  </div>
+
+  <div class="font-col inter">
+    <div class="font-tag">Inter <span class="gf">Google Fonts</span></div>
+    <div class="font-name">Inter</div>
+    <div class="font-meta">Rasmus Andersson, 2017 · Free (SIL OFL) · Variable · Google Fonts</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Semi 600</div><div class="weight-sample" style="font-weight:600;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Pause the noise.</div></div>
+    <div class="weight-row"><div class="weight-label">ExtraBold 800</div><div class="weight-sample" style="font-weight:800;">Pause the noise.</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- TAGLINE / HERO -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Tagline / Hero Treatment</h2>
+  <p>Trade show banner, website hero, brochure cover</p>
+</div>
+
+<div class="tri-grid">
+  <div class="tagline-col jakarta">
+    <div class="tl-brand">Plus Jakarta Sans</div>
+    <div class="tl-main">Pause the noise.</div>
+    <div class="tl-sub">Designed for productivity. Built for focus.</div>
+  </div>
+  <div class="tagline-col avenir">
+    <div class="tl-brand">Avenir Next</div>
+    <div class="tl-main">Pause the noise.</div>
+    <div class="tl-sub">Designed for productivity. Built for focus.</div>
+  </div>
+  <div class="tagline-col inter">
+    <div class="tl-brand">Inter</div>
+    <div class="tl-main">Pause the noise.</div>
+    <div class="tl-sub">Designed for productivity. Built for focus.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- PRODUCT SLOGANS -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Product Slogans</h2>
+  <p>How each font carries the "Designed for X. Built for Y." system</p>
+</div>
+
+<div class="tri-grid">
+  <div class="slogan-col jakarta">
+    <div class="font-tag">Plus Jakarta Sans</div>
+    <div class="slogan-item"><div class="slogan-product">Pillar One</div><div class="slogan-text">Designed for productivity. Built for focus.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Two</div><div class="slogan-text">Designed for conversation. Built for collaboration.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Four</div><div class="slogan-text">Designed for alignment. Built for teams.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar ADA</div><div class="slogan-text">Designed for belonging. Built for accessibility.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nest</div><div class="slogan-text">Designed for care. Built for comfort.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nestling</div><div class="slogan-text">Designed for nurture. Built for privacy.</div></div>
+  </div>
+
+  <div class="slogan-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="slogan-item"><div class="slogan-product">Pillar One</div><div class="slogan-text">Designed for productivity. Built for focus.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Two</div><div class="slogan-text">Designed for conversation. Built for collaboration.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Four</div><div class="slogan-text">Designed for alignment. Built for teams.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar ADA</div><div class="slogan-text">Designed for belonging. Built for accessibility.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nest</div><div class="slogan-text">Designed for care. Built for comfort.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nestling</div><div class="slogan-text">Designed for nurture. Built for privacy.</div></div>
+  </div>
+
+  <div class="slogan-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="slogan-item"><div class="slogan-product">Pillar One</div><div class="slogan-text">Designed for productivity. Built for focus.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Two</div><div class="slogan-text">Designed for conversation. Built for collaboration.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Four</div><div class="slogan-text">Designed for alignment. Built for teams.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar ADA</div><div class="slogan-text">Designed for belonging. Built for accessibility.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nest</div><div class="slogan-text">Designed for care. Built for comfort.</div></div>
+    <div class="slogan-item"><div class="slogan-product">Pillar Nestling</div><div class="slogan-text">Designed for nurture. Built for privacy.</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- BRAND HIERARCHY -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Brand Hierarchy — Full Content Block</h2>
+  <p>H1 → H2 → H3 → Body → Caption → Callout — the full Document Design Architecture</p>
+</div>
+
+<div class="tri-grid">
+  <div class="brand-col jakarta">
+    <div class="font-tag">Plus Jakarta Sans <span class="rec">Recommended</span></div>
+    <div class="card-eyebrow">Product Overview</div>
+    <div class="card-h1">Pillar One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Designed for productivity. Built for focus.</div>
+    <div class="card-h3">Built for Performance</div>
+    <div class="card-body">The Pillar One single-person booth creates a private workspace within any open floor plan. Superior acoustic isolation, integrated power and data, adjustable LED lighting, and premium ventilation deliver a focused environment for calls, deep work, and confidential conversations.</div>
+    <div class="card-h3">Designed Your Way</div>
+    <div class="card-body">Choose from three exterior finishes — Silver Oak, White, or Black — paired with Grey Mix or Flannel interior fabrics from Guilford of Maine's FR701 collection. Over 40 custom fabric colors available. COM upon request.</div>
+    <div class="card-caption">Quick assembly. Minimal footprint. Maximum impact. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+    <div class="callout"><strong>Note:</strong> All Pillar booths ship flat-packed and assemble in under 2 hours with basic tools. No specialized labor required.</div>
+  </div>
+
+  <div class="brand-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="card-eyebrow">Product Overview</div>
+    <div class="card-h1">Pillar One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Designed for productivity. Built for focus.</div>
+    <div class="card-h3">Built for Performance</div>
+    <div class="card-body">The Pillar One single-person booth creates a private workspace within any open floor plan. Superior acoustic isolation, integrated power and data, adjustable LED lighting, and premium ventilation deliver a focused environment for calls, deep work, and confidential conversations.</div>
+    <div class="card-h3">Designed Your Way</div>
+    <div class="card-body">Choose from three exterior finishes — Silver Oak, White, or Black — paired with Grey Mix or Flannel interior fabrics from Guilford of Maine's FR701 collection. Over 40 custom fabric colors available. COM upon request.</div>
+    <div class="card-caption">Quick assembly. Minimal footprint. Maximum impact. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+    <div class="callout"><strong>Note:</strong> All Pillar booths ship flat-packed and assemble in under 2 hours with basic tools. No specialized labor required.</div>
+  </div>
+
+  <div class="brand-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="card-eyebrow">Product Overview</div>
+    <div class="card-h1">Pillar One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Designed for productivity. Built for focus.</div>
+    <div class="card-h3">Built for Performance</div>
+    <div class="card-body">The Pillar One single-person booth creates a private workspace within any open floor plan. Superior acoustic isolation, integrated power and data, adjustable LED lighting, and premium ventilation deliver a focused environment for calls, deep work, and confidential conversations.</div>
+    <div class="card-h3">Designed Your Way</div>
+    <div class="card-body">Choose from three exterior finishes — Silver Oak, White, or Black — paired with Grey Mix or Flannel interior fabrics from Guilford of Maine's FR701 collection. Over 40 custom fabric colors available. COM upon request.</div>
+    <div class="card-caption">Quick assembly. Minimal footprint. Maximum impact. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+    <div class="callout"><strong>Note:</strong> All Pillar booths ship flat-packed and assemble in under 2 hours with basic tools. No specialized labor required.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- SIZE LADDER -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Size Ladder — 25px to 10px</h2>
+  <p>Heading hierarchy down through footnotes and fine print</p>
+</div>
+
+<div class="tri-grid">
+  <div class="font-col jakarta">
+    <div class="font-tag">Plus Jakarta Sans</div>
+    <div class="size-label">25px — H1</div>
+    <div class="s-25">Pillar Nest</div>
+    <div class="size-label">16px — H2</div>
+    <div class="s-16">Designed for care. Built for comfort.</div>
+    <div class="size-label">13px — Body</div>
+    <div class="s-13">The Pillar Nest provides a private, comfortable space for nursing mothers, offering a secure environment with integrated power, adjustable lighting, and premium ventilation in a compact 2×2 footprint.</div>
+    <div class="size-label">11px — Table / Caption</div>
+    <div class="s-11">Dimensions: 84"W × 48"D × 96"H | Weight: 890 lbs | Interior: Muslin (DesignTex Mackintosh) | Seating: Moss fabric</div>
+    <div class="size-label">10px — Footnote</div>
+    <div class="s-10">All specifications subject to change without notice. Custom configurations available upon request. Pricing excludes freight, installation, and applicable taxes. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+  </div>
+
+  <div class="font-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="size-label">25px — H1</div>
+    <div class="s-25">Pillar Nest</div>
+    <div class="size-label">16px — H2</div>
+    <div class="s-16">Designed for care. Built for comfort.</div>
+    <div class="size-label">13px — Body</div>
+    <div class="s-13">The Pillar Nest provides a private, comfortable space for nursing mothers, offering a secure environment with integrated power, adjustable lighting, and premium ventilation in a compact 2×2 footprint.</div>
+    <div class="size-label">11px — Table / Caption</div>
+    <div class="s-11">Dimensions: 84"W × 48"D × 96"H | Weight: 890 lbs | Interior: Muslin (DesignTex Mackintosh) | Seating: Moss fabric</div>
+    <div class="size-label">10px — Footnote</div>
+    <div class="s-10">All specifications subject to change without notice. Custom configurations available upon request. Pricing excludes freight, installation, and applicable taxes. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+  </div>
+
+  <div class="font-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="size-label">25px — H1</div>
+    <div class="s-25">Pillar Nest</div>
+    <div class="size-label">16px — H2</div>
+    <div class="s-16">Designed for care. Built for comfort.</div>
+    <div class="size-label">13px — Body</div>
+    <div class="s-13">The Pillar Nest provides a private, comfortable space for nursing mothers, offering a secure environment with integrated power, adjustable lighting, and premium ventilation in a compact 2×2 footprint.</div>
+    <div class="size-label">11px — Table / Caption</div>
+    <div class="s-11">Dimensions: 84"W × 48"D × 96"H | Weight: 890 lbs | Interior: Muslin (DesignTex Mackintosh) | Seating: Moss fabric</div>
+    <div class="size-label">10px — Footnote</div>
+    <div class="s-10">All specifications subject to change without notice. Custom configurations available upon request. Pricing excludes freight, installation, and applicable taxes. Standard warranty: 10 years structural, 5 years electrical, 2 years finish.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- TABLE TEST -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Table Rendering</h2>
+  <p>Product comparison table in brand styling</p>
+</div>
+
+<div class="tri-grid">
+  <div class="table-col jakarta">
+    <div class="font-tag">Plus Jakarta Sans</div>
+    <table>
+      <thead><tr><th>Feature</th><th>Pillar One</th><th>Pillar Two</th></tr></thead>
+      <tbody>
+        <tr><td>Capacity</td><td>1 person</td><td>2 people</td></tr>
+        <tr><td>Exterior</td><td>Silver Oak / White / Black</td><td>Silver Oak / White / Black</td></tr>
+        <tr><td>Interior Fabric</td><td>Grey Mix / Flannel (FR701)</td><td>Grey Mix / Flannel (FR701)</td></tr>
+        <tr><td>Seating</td><td>Stool</td><td>Sofa (Gabriel Medley)</td></tr>
+        <tr><td>Power</td><td>2× USB-A, 1× USB-C, 2× AC</td><td>4× USB-A, 2× USB-C, 4× AC</td></tr>
+        <tr><td>Assembly</td><td>~45 minutes</td><td>~90 minutes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <table>
+      <thead><tr><th>Feature</th><th>Pillar One</th><th>Pillar Two</th></tr></thead>
+      <tbody>
+        <tr><td>Capacity</td><td>1 person</td><td>2 people</td></tr>
+        <tr><td>Exterior</td><td>Silver Oak / White / Black</td><td>Silver Oak / White / Black</td></tr>
+        <tr><td>Interior Fabric</td><td>Grey Mix / Flannel (FR701)</td><td>Grey Mix / Flannel (FR701)</td></tr>
+        <tr><td>Seating</td><td>Stool</td><td>Sofa (Gabriel Medley)</td></tr>
+        <tr><td>Power</td><td>2× USB-A, 1× USB-C, 2× AC</td><td>4× USB-A, 2× USB-C, 4× AC</td></tr>
+        <tr><td>Assembly</td><td>~45 minutes</td><td>~90 minutes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-col inter">
+    <div class="font-tag">Inter</div>
+    <table>
+      <thead><tr><th>Feature</th><th>Pillar One</th><th>Pillar Two</th></tr></thead>
+      <tbody>
+        <tr><td>Capacity</td><td>1 person</td><td>2 people</td></tr>
+        <tr><td>Exterior</td><td>Silver Oak / White / Black</td><td>Silver Oak / White / Black</td></tr>
+        <tr><td>Interior Fabric</td><td>Grey Mix / Flannel (FR701)</td><td>Grey Mix / Flannel (FR701)</td></tr>
+        <tr><td>Seating</td><td>Stool</td><td>Sofa (Gabriel Medley)</td></tr>
+        <tr><td>Power</td><td>2× USB-A, 1× USB-C, 2× AC</td><td>4× USB-A, 2× USB-C, 4× AC</td></tr>
+        <tr><td>Assembly</td><td>~45 minutes</td><td>~90 minutes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- DOCX EXPLAINER -->
+<!-- ════════════════════════════ -->
+
+<div class="explainer">
+  <h2>Why Arial for DOCX — The Font Substitution Problem</h2>
+
+  <p>Every font has unique <strong>character metrics</strong> — the exact width of each letter, the height of ascenders and descenders, the spacing between characters. When Word can't find the specified font, it substitutes the closest system font — but the metrics never match exactly. Here's what actually breaks:</p>
+
+  <div class="explainer-grid">
+    <div class="explainer-box good">
+      <h4>Designing in Arial (What You Send = What They See)</h4>
+      <p>You design the document in Arial. You see exactly how it looks. Line breaks, page breaks, table column widths, header spacing — all verified. The recipient opens it on any machine and sees the identical layout, because Arial is on every computer ever made. No surprises.</p>
+    </div>
+    <div class="explainer-box bad">
+      <h4>Designing in Brand Font (What You Send ≠ What They See)</h4>
+      <p>You design in Plus Jakarta Sans. It looks perfect on your machine. The recipient opens it on Windows — they don't have Plus Jakarta Sans, so Word silently substitutes Calibri. Calibri has different character widths, so: lines break in different places, tables overflow or leave awkward gaps, page breaks shift (content moves to wrong pages), carefully positioned headers land in the wrong spot. The recipient has no idea it's supposed to look different — they just see a messy document.</p>
+    </div>
+  </div>
+
+  <p><strong>Can you predict the substitution and design around it?</strong> Not reliably. Word's substitution algorithm considers the font's PANOSE classification, family type, and metrics — and different versions of Word on different operating systems may choose different substitutes. A document that substitutes to Calibri on Windows 11 might substitute to something else on Windows 10 or on a government machine with restricted fonts. You'd be designing for a moving target.</p>
+
+  <p><strong>The rule:</strong> Brand font for HTML (loads from web) and PDF (font embeds in file). Arial for DOCX (universal rendering). This isn't a compromise — it's the only way to guarantee every recipient sees a professional document.</p>
+</div>
+
+<div class="page-footer">
+  Pillar Booth — Font Comparison · Plus Jakarta Sans vs Avenir Next vs Inter · March 2026
+</div>
+
+</body>
+</html>
