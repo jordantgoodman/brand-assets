@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POPS Font Comparison — IBM Plex Sans vs Avenir Next vs Inter</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pops-dark-blue: #1B243C;
+    --pops-medium-blue: #304059;
+    --pops-light-blue: #5C6E82;
+    --pops-pale-blue: #F3F5F6;
+    --pops-gold: #E3C682;
+    --pops-charcoal: #41434B;
+    --pops-medium-gray: #7B7E8A;
+    --pops-fog: #F9F9F9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #FAFAF7;
+    color: #333;
+    line-height: 1.6;
+    padding: 48px 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .page-header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #E0E0E0;
+  }
+  .page-header h1 { font-size: 28px; font-weight: 600; color: var(--pops-dark-blue); margin-bottom: 4px; }
+  .page-header .subtitle { font-size: 14px; font-weight: 400; color: var(--pops-medium-gray); }
+
+  .tri-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .section-header { margin-bottom: 24px; }
+  .section-header h2 { font-size: 18px; font-weight: 600; color: var(--pops-dark-blue); margin-bottom: 4px; }
+  .section-header p { font-size: 13px; color: var(--pops-medium-gray); }
+
+  /* ── Font Columns ── */
+  .font-col {
+    background: white;
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid #E8E8E8;
+  }
+
+  .font-col.plex { font-family: 'IBM Plex Sans', sans-serif; }
+  .font-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .font-col.inter { font-family: 'Inter', sans-serif; }
+
+  .font-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #BBB; margin-bottom: 12px;
+  }
+  .font-tag .rec {
+    color: var(--pops-dark-blue); background: var(--pops-pale-blue);
+    padding: 2px 8px; border-radius: 3px; margin-left: 8px; font-size: 9px;
+  }
+
+  .font-name { font-size: 32px; font-weight: 700; color: var(--pops-dark-blue); margin-bottom: 2px; }
+  .font-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: #BBB; margin-bottom: 20px; line-height: 1.5; }
+
+  .weight-row { display: flex; align-items: baseline; gap: 12px; padding: 6px 0; border-bottom: 1px solid #F5F5F5; }
+  .weight-row:last-child { border-bottom: none; }
+  .weight-label { font-family: 'Inter', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #CCC; width: 70px; flex-shrink: 0; }
+  .weight-sample { font-size: 16px; color: #333; }
+
+  /* ── Brand Cards ── */
+  .brand-col {
+    background: var(--pops-pale-blue);
+    border-radius: 8px;
+    padding: 28px;
+    border: 1px solid #E0E8EC;
+  }
+
+  .brand-col.plex { font-family: 'IBM Plex Sans', sans-serif; }
+  .brand-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .brand-col.inter { font-family: 'Inter', sans-serif; }
+
+  .brand-col .card-eyebrow {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--pops-gold); margin-bottom: 12px;
+  }
+  .brand-col .card-h1 { font-size: 25px; font-weight: 700; color: var(--pops-dark-blue); margin-bottom: 4px; }
+  .brand-col .card-rule { display: block; width: 64px; height: 2px; background: var(--pops-gold); margin: 8px 0 12px; }
+  .brand-col .card-h2 { font-size: 16px; font-weight: 600; color: var(--pops-medium-blue); margin-bottom: 12px; }
+  .brand-col .card-h3 { font-size: 13px; font-weight: 600; color: var(--pops-medium-blue); margin-bottom: 8px; }
+  .brand-col .card-body { font-size: 13px; font-weight: 400; color: var(--pops-charcoal); line-height: 1.75; margin-bottom: 12px; }
+  .brand-col .card-caption { font-size: 11px; color: var(--pops-light-blue); line-height: 1.6; }
+
+  .callout {
+    background: white;
+    border-left: 3px solid var(--pops-gold);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--pops-charcoal);
+    line-height: 1.7;
+  }
+
+  /* ── Tagline Test ── */
+  .tagline-col {
+    background: var(--pops-dark-blue);
+    border-radius: 8px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+
+  .tagline-col.plex { font-family: 'IBM Plex Sans', sans-serif; }
+  .tagline-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .tagline-col.inter { font-family: 'Inter', sans-serif; }
+
+  .tagline-col .tl-brand {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--pops-gold); margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+  }
+  .tagline-col .tl-main { font-size: 36px; font-weight: 700; color: white; margin-bottom: 8px; letter-spacing: -0.3px; }
+  .tagline-col .tl-sub { font-size: 16px; font-weight: 500; color: var(--pops-gold); letter-spacing: 2px; }
+
+  /* ── Size Ladder ── */
+  .size-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px; color: #CCC; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 4px; margin-top: 14px;
+  }
+  .size-label:first-of-type { margin-top: 0; }
+
+  .s-25 { font-size: 25px; font-weight: 700; color: var(--pops-dark-blue); line-height: 1.3; }
+  .s-16 { font-size: 16px; font-weight: 600; color: var(--pops-medium-blue); line-height: 1.4; }
+  .s-13 { font-size: 13px; font-weight: 400; color: var(--pops-charcoal); line-height: 1.75; }
+  .s-11 { font-size: 11px; font-weight: 400; color: var(--pops-charcoal); line-height: 1.6; }
+  .s-10 { font-size: 10px; font-weight: 400; color: var(--pops-light-blue); line-height: 1.6; }
+
+  /* ── Tables ── */
+  .table-col {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    border: 1px solid #E8E8E8;
+    overflow-x: auto;
+  }
+
+  .table-col.plex table { font-family: 'IBM Plex Sans', sans-serif; }
+  .table-col.avenir table { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .table-col.inter table { font-family: 'Inter', sans-serif; }
+
+  .table-col table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .table-col th {
+    background: var(--pops-dark-blue); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .table-col td { padding: 10px 12px; border-bottom: 1px solid #F0F0F0; color: var(--pops-charcoal); }
+  .table-col tr:nth-child(even) td { background: var(--pops-pale-blue); }
+
+  /* ── Numbers ── */
+  .num-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .num-label { font-family: 'Inter', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #CCC; width: 90px; flex-shrink: 0; }
+  .num-sample { font-size: 13px; color: #333; font-variant-numeric: tabular-nums; }
+
+  /* ── Bid Document Simulation ── */
+  .bid-col {
+    background: white;
+    border-radius: 8px;
+    padding: 32px;
+    border: 1px solid #E8E8E8;
+  }
+
+  .bid-col.plex { font-family: 'IBM Plex Sans', sans-serif; }
+  .bid-col.avenir { font-family: 'Avenir Next', 'Avenir', 'Nunito Sans', sans-serif; }
+  .bid-col.inter { font-family: 'Inter', sans-serif; }
+
+  .bid-col .bid-header {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--pops-medium-gray);
+    padding-bottom: 8px; border-bottom: 2px solid var(--pops-gold);
+    margin-bottom: 16px;
+  }
+  .bid-col .bid-section {
+    font-size: 14px; font-weight: 700; color: var(--pops-dark-blue);
+    margin-bottom: 4px; margin-top: 16px;
+  }
+  .bid-col .bid-section:first-of-type { margin-top: 0; }
+  .bid-col .bid-rule { display: block; width: 100%; height: 1px; background: var(--pops-gold); margin-bottom: 12px; }
+  .bid-col .bid-body { font-size: 11px; color: var(--pops-charcoal); line-height: 1.7; margin-bottom: 8px; }
+  .bid-col .bid-spec {
+    font-size: 10px; color: var(--pops-charcoal); line-height: 1.6;
+    padding-left: 16px; border-left: 2px solid var(--pops-pale-blue);
+    margin: 8px 0;
+  }
+  .bid-col .bid-ref {
+    font-size: 9px; color: var(--pops-medium-gray); font-style: italic;
+  }
+
+  /* ── Compatibility ── */
+  .compat-section { margin-bottom: 48px; }
+  .compat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .compat-card { background: white; border-radius: 8px; padding: 24px; border: 1px solid #E8E8E8; }
+  .compat-card h4 { font-size: 14px; font-weight: 600; color: var(--pops-dark-blue); margin-bottom: 16px; }
+  .compat-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #F5F5F5; font-size: 12px; }
+  .compat-row:last-child { border-bottom: none; }
+  .compat-label { color: #666; }
+  .compat-status { font-weight: 600; font-size: 11px; }
+  .compat-status.yes { color: #4A8B6E; }
+  .compat-status.partial { color: #B8975C; }
+  .compat-status.no { color: #C47A6E; }
+
+  .page-footer {
+    text-align: center; font-size: 11px; color: #CCC;
+    padding-top: 24px; border-top: 1px solid #F0F0F0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>POPS — Font Comparison</h1>
+  <div class="subtitle">IBM Plex Sans vs Avenir Next vs Inter · Side-by-side in brand colors and hierarchy · March 2026</div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- CROSS-PLATFORM COMPATIBILITY -->
+<!-- ════════════════════════════ -->
+
+<div class="compat-section">
+  <div class="section-header">
+    <h2>Cross-Platform Compatibility</h2>
+    <p>POPS deliverables go to government procurement officers on Windows — cross-platform rendering is critical</p>
+  </div>
+
+  <div class="compat-grid">
+    <div class="compat-card">
+      <h4>IBM Plex Sans</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status yes">Free — SIL Open Font License</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status yes">Yes — unrestricted</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status yes">Yes — Google Fonts CDN</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — embed freely (OFL)</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Requires install on machine</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status yes">Yes — one-line embed</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status yes">Yes — weight axis</span></div>
+      <div class="compat-row"><span class="compat-label">Mono companion</span><span class="compat-status yes">IBM Plex Mono (part numbers)</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status no">No — manual install</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — manual install</span></div>
+    </div>
+
+    <div class="compat-card">
+      <h4>Avenir Next</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status partial">Licensed — Linotype/Monotype</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status partial">macOS system use free; web needs license</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status partial">Needs fallback chain on non-Mac</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — if generated on Mac</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Mac only — falls back on Windows</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status no">No — proprietary</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status no">No — static weights only</span></div>
+      <div class="compat-row"><span class="compat-label">Mono companion</span><span class="compat-status no">No companion mono</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status yes">Yes — ships with macOS</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — not included</span></div>
+    </div>
+
+    <div class="compat-card">
+      <h4>Inter</h4>
+      <div class="compat-row"><span class="compat-label">License</span><span class="compat-status yes">Free — SIL Open Font License</span></div>
+      <div class="compat-row"><span class="compat-label">Commercial use</span><span class="compat-status yes">Yes — unrestricted</span></div>
+      <div class="compat-row"><span class="compat-label">HTML (web)</span><span class="compat-status yes">Yes — Google Fonts CDN</span></div>
+      <div class="compat-row"><span class="compat-label">PDF embedding</span><span class="compat-status yes">Yes — embed freely</span></div>
+      <div class="compat-row"><span class="compat-label">DOCX</span><span class="compat-status partial">Requires install on machine</span></div>
+      <div class="compat-row"><span class="compat-label">Google Fonts</span><span class="compat-status yes">Yes — one-line embed</span></div>
+      <div class="compat-row"><span class="compat-label">Variable font</span><span class="compat-status yes">Yes — weight + optical size</span></div>
+      <div class="compat-row"><span class="compat-label">Mono companion</span><span class="compat-status no">No companion mono</span></div>
+      <div class="compat-row"><span class="compat-label">macOS built-in</span><span class="compat-status no">No — manual install</span></div>
+      <div class="compat-row"><span class="compat-label">Windows built-in</span><span class="compat-status no">No — manual install</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- WEIGHT SPECIMENS -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Weight Specimens</h2>
+  <p>All weights rendered with POPS tagline</p>
+</div>
+
+<div class="tri-grid">
+  <div class="font-col plex">
+    <div class="font-tag">IBM Plex Sans <span class="rec">Recommended</span></div>
+    <div class="font-name">IBM Plex Sans</div>
+    <div class="font-meta">Mike Abbink / Bold Monday, 2017<br>Free (SIL OFL) · Variable · Google Fonts<br>Companion: IBM Plex Mono</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">SemiBold 600</div><div class="weight-sample" style="font-weight:600;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Steel-built. Field-proven.</div></div>
+  </div>
+
+  <div class="font-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="font-name">Avenir Next</div>
+    <div class="font-meta">Frutiger & Kobayashi, 2004<br>Licensed (Linotype) · macOS system font</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Demi 600</div><div class="weight-sample" style="font-weight:600;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Steel-built. Field-proven.</div></div>
+  </div>
+
+  <div class="font-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="font-name">Inter</div>
+    <div class="font-meta">Rasmus Andersson, 2017<br>Free (SIL OFL) · Variable · Google Fonts</div>
+    <div class="weight-row"><div class="weight-label">Light 300</div><div class="weight-sample" style="font-weight:300;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Regular 400</div><div class="weight-sample" style="font-weight:400;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Medium 500</div><div class="weight-sample" style="font-weight:500;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Semi 600</div><div class="weight-sample" style="font-weight:600;">Steel-built. Field-proven.</div></div>
+    <div class="weight-row"><div class="weight-label">Bold 700</div><div class="weight-sample" style="font-weight:700;">Steel-built. Field-proven.</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- TAGLINE / HERO -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Tagline / Hero Treatment</h2>
+  <p>Bid cover, trade show banner, website hero — the first impression</p>
+</div>
+
+<div class="tri-grid">
+  <div class="tagline-col plex">
+    <div class="tl-brand">IBM Plex Sans</div>
+    <div class="tl-main">Steel-built. Field-proven.</div>
+    <div class="tl-sub">Secure. Safe. Private.</div>
+  </div>
+  <div class="tagline-col avenir">
+    <div class="tl-brand">Avenir Next</div>
+    <div class="tl-main">Steel-built. Field-proven.</div>
+    <div class="tl-sub">Secure. Safe. Private.</div>
+  </div>
+  <div class="tagline-col inter">
+    <div class="tl-brand">Inter</div>
+    <div class="tl-main">Steel-built. Field-proven.</div>
+    <div class="tl-sub">Secure. Safe. Private.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- BRAND HIERARCHY -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Brand Hierarchy — Full Content Block</h2>
+  <p>H1 → H2 → H3 → Body → Caption — Document Design Architecture in POPS colors</p>
+</div>
+
+<div class="tri-grid">
+  <div class="brand-col plex">
+    <div class="font-tag">IBM Plex Sans <span class="rec">Recommended</span></div>
+    <div class="card-eyebrow">Product Specification</div>
+    <div class="card-h1">POPS One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Steel-built. Field-proven.</div>
+    <div class="card-h3">Construction</div>
+    <div class="card-body">The POPS One communication booth is engineered for correctional facility environments requiring secure, private video teleconference capabilities. All-steel welded construction with 16-gauge panels, ligature-resistant hardware, and tamper-proof fasteners. Integrated HVAC system maintains comfortable operating temperatures in all facility zones.</div>
+    <div class="card-h3">Compliance</div>
+    <div class="card-body">Meets ASTM E84 Class A fire rating, ASTM E90 sound transmission, and California Building Code Chapter 16 requirements. All hardware is ligature-resistant per facility security standards. ADA-compliant configurations available.</div>
+    <div class="card-caption">Lead time: 90–120 days from order. FOB West Chicago, IL. Installation support and training available.</div>
+    <div class="callout"><strong>Note:</strong> All POPS booths are manufactured in the United States and ship fully assembled or in modular sections for rapid field deployment.</div>
+  </div>
+
+  <div class="brand-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="card-eyebrow">Product Specification</div>
+    <div class="card-h1">POPS One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Steel-built. Field-proven.</div>
+    <div class="card-h3">Construction</div>
+    <div class="card-body">The POPS One communication booth is engineered for correctional facility environments requiring secure, private video teleconference capabilities. All-steel welded construction with 16-gauge panels, ligature-resistant hardware, and tamper-proof fasteners. Integrated HVAC system maintains comfortable operating temperatures in all facility zones.</div>
+    <div class="card-h3">Compliance</div>
+    <div class="card-body">Meets ASTM E84 Class A fire rating, ASTM E90 sound transmission, and California Building Code Chapter 16 requirements. All hardware is ligature-resistant per facility security standards. ADA-compliant configurations available.</div>
+    <div class="card-caption">Lead time: 90–120 days from order. FOB West Chicago, IL. Installation support and training available.</div>
+    <div class="callout"><strong>Note:</strong> All POPS booths are manufactured in the United States and ship fully assembled or in modular sections for rapid field deployment.</div>
+  </div>
+
+  <div class="brand-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="card-eyebrow">Product Specification</div>
+    <div class="card-h1">POPS One</div>
+    <span class="card-rule"></span>
+    <div class="card-h2">Steel-built. Field-proven.</div>
+    <div class="card-h3">Construction</div>
+    <div class="card-body">The POPS One communication booth is engineered for correctional facility environments requiring secure, private video teleconference capabilities. All-steel welded construction with 16-gauge panels, ligature-resistant hardware, and tamper-proof fasteners. Integrated HVAC system maintains comfortable operating temperatures in all facility zones.</div>
+    <div class="card-h3">Compliance</div>
+    <div class="card-body">Meets ASTM E84 Class A fire rating, ASTM E90 sound transmission, and California Building Code Chapter 16 requirements. All hardware is ligature-resistant per facility security standards. ADA-compliant configurations available.</div>
+    <div class="card-caption">Lead time: 90–120 days from order. FOB West Chicago, IL. Installation support and training available.</div>
+    <div class="callout"><strong>Note:</strong> All POPS booths are manufactured in the United States and ship fully assembled or in modular sections for rapid field deployment.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- BID DOCUMENT SIMULATION -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Bid Document Simulation</h2>
+  <p>This is the real test — how each font looks in a compliance-heavy bid package section</p>
+</div>
+
+<div class="tri-grid">
+  <div class="bid-col plex">
+    <div class="font-tag">IBM Plex Sans <span class="rec">Recommended</span></div>
+    <div class="bid-header">Section 12 64 13 — Prefabricated VEST Booths</div>
+    <div class="bid-section">2.12 Hardware</div>
+    <span class="bid-rule"></span>
+    <div class="bid-body">A. Door Hardware: Provide commercial-grade, ligature-resistant door hardware meeting the following requirements:</div>
+    <div class="bid-spec">1. Hinges: Stanley CECB179 or approved equal. Heavy-duty, full mortise, ball bearing, ligature-resistant. 4-1/2" × 4-1/2", US26D finish.<br>2. Pull Plate: Ives 8302 push/pull plate. 16" × 4", 0.050" thick, US32D finish.<br>3. Closer: LCN 4040XP or approved equal. Cast iron body, full cover, delayed action.</div>
+    <div class="bid-body">B. All fasteners shall be tamper-proof security type, minimum 12-24 thread, stainless steel. Provide security bit with each booth delivery.</div>
+    <div class="bid-ref">Reference: CDCR VEST Booths RFP, Section 12 64 13, Part 2 — Products</div>
+  </div>
+
+  <div class="bid-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="bid-header">Section 12 64 13 — Prefabricated VEST Booths</div>
+    <div class="bid-section">2.12 Hardware</div>
+    <span class="bid-rule"></span>
+    <div class="bid-body">A. Door Hardware: Provide commercial-grade, ligature-resistant door hardware meeting the following requirements:</div>
+    <div class="bid-spec">1. Hinges: Stanley CECB179 or approved equal. Heavy-duty, full mortise, ball bearing, ligature-resistant. 4-1/2" × 4-1/2", US26D finish.<br>2. Pull Plate: Ives 8302 push/pull plate. 16" × 4", 0.050" thick, US32D finish.<br>3. Closer: LCN 4040XP or approved equal. Cast iron body, full cover, delayed action.</div>
+    <div class="bid-body">B. All fasteners shall be tamper-proof security type, minimum 12-24 thread, stainless steel. Provide security bit with each booth delivery.</div>
+    <div class="bid-ref">Reference: CDCR VEST Booths RFP, Section 12 64 13, Part 2 — Products</div>
+  </div>
+
+  <div class="bid-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="bid-header">Section 12 64 13 — Prefabricated VEST Booths</div>
+    <div class="bid-section">2.12 Hardware</div>
+    <span class="bid-rule"></span>
+    <div class="bid-body">A. Door Hardware: Provide commercial-grade, ligature-resistant door hardware meeting the following requirements:</div>
+    <div class="bid-spec">1. Hinges: Stanley CECB179 or approved equal. Heavy-duty, full mortise, ball bearing, ligature-resistant. 4-1/2" × 4-1/2", US26D finish.<br>2. Pull Plate: Ives 8302 push/pull plate. 16" × 4", 0.050" thick, US32D finish.<br>3. Closer: LCN 4040XP or approved equal. Cast iron body, full cover, delayed action.</div>
+    <div class="bid-body">B. All fasteners shall be tamper-proof security type, minimum 12-24 thread, stainless steel. Provide security bit with each booth delivery.</div>
+    <div class="bid-ref">Reference: CDCR VEST Booths RFP, Section 12 64 13, Part 2 — Products</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- TABLE TEST -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Compliance Table</h2>
+  <p>The kind of table that fills every bid package — dense data, must be scannable</p>
+</div>
+
+<div class="tri-grid">
+  <div class="table-col plex">
+    <div class="font-tag">IBM Plex Sans</div>
+    <table>
+      <thead><tr><th>Specification</th><th>Standard</th><th>Result</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Fire Rating</td><td>ASTM E84</td><td>Class A (FSI ≤25, SDI ≤450)</td><td>Verified</td></tr>
+        <tr><td>Sound Transmission</td><td>ASTM E90</td><td>STC 35+</td><td>Verified</td></tr>
+        <tr><td>Impact Resistance</td><td>ASTM C1349/F1915</td><td>Level 3</td><td>Verified</td></tr>
+        <tr><td>Panel Gauge</td><td>Per RFP §2.3</td><td>16 ga minimum</td><td>Verified</td></tr>
+        <tr><td>Glazing</td><td>AZCARB GP</td><td>15/32" polycarbonate</td><td>Verified</td></tr>
+        <tr><td>Acoustic Panel</td><td>NRC ≥ 0.70</td><td>Zintra 1" (NRC 0.75)</td><td>Verified</td></tr>
+        <tr><td>Hardware</td><td>Ligature-resistant</td><td>All points compliant</td><td>Verified</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <table>
+      <thead><tr><th>Specification</th><th>Standard</th><th>Result</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Fire Rating</td><td>ASTM E84</td><td>Class A (FSI ≤25, SDI ≤450)</td><td>Verified</td></tr>
+        <tr><td>Sound Transmission</td><td>ASTM E90</td><td>STC 35+</td><td>Verified</td></tr>
+        <tr><td>Impact Resistance</td><td>ASTM C1349/F1915</td><td>Level 3</td><td>Verified</td></tr>
+        <tr><td>Panel Gauge</td><td>Per RFP §2.3</td><td>16 ga minimum</td><td>Verified</td></tr>
+        <tr><td>Glazing</td><td>AZCARB GP</td><td>15/32" polycarbonate</td><td>Verified</td></tr>
+        <tr><td>Acoustic Panel</td><td>NRC ≥ 0.70</td><td>Zintra 1" (NRC 0.75)</td><td>Verified</td></tr>
+        <tr><td>Hardware</td><td>Ligature-resistant</td><td>All points compliant</td><td>Verified</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-col inter">
+    <div class="font-tag">Inter</div>
+    <table>
+      <thead><tr><th>Specification</th><th>Standard</th><th>Result</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Fire Rating</td><td>ASTM E84</td><td>Class A (FSI ≤25, SDI ≤450)</td><td>Verified</td></tr>
+        <tr><td>Sound Transmission</td><td>ASTM E90</td><td>STC 35+</td><td>Verified</td></tr>
+        <tr><td>Impact Resistance</td><td>ASTM C1349/F1915</td><td>Level 3</td><td>Verified</td></tr>
+        <tr><td>Panel Gauge</td><td>Per RFP §2.3</td><td>16 ga minimum</td><td>Verified</td></tr>
+        <tr><td>Glazing</td><td>AZCARB GP</td><td>15/32" polycarbonate</td><td>Verified</td></tr>
+        <tr><td>Acoustic Panel</td><td>NRC ≥ 0.70</td><td>Zintra 1" (NRC 0.75)</td><td>Verified</td></tr>
+        <tr><td>Hardware</td><td>Ligature-resistant</td><td>All points compliant</td><td>Verified</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════ -->
+<!-- NUMBERS -->
+<!-- ════════════════════════════ -->
+
+<div class="section-header">
+  <h2>Numeric Rendering</h2>
+  <p>Pricing, dimensions, part numbers, spec data — tabular figures critical for alignment</p>
+</div>
+
+<div class="tri-grid">
+  <div class="font-col plex">
+    <div class="font-tag">IBM Plex Sans</div>
+    <div class="num-row"><div class="num-label">Price</div><div class="num-sample">$14,850.00</div></div>
+    <div class="num-row"><div class="num-label">Dimensions</div><div class="num-sample">48"W × 48"D × 96"H</div></div>
+    <div class="num-row"><div class="num-label">Part Number</div><div class="num-sample">POPS-ONE-167601-A3</div></div>
+    <div class="num-row"><div class="num-label">Specs</div><div class="num-sample">STC 35+ | NRC 0.75 | 16 ga | 1,250 lbs</div></div>
+    <div class="num-row"><div class="num-label">Timeline</div><div class="num-sample">30d prototype → 90–120d mfg → 1–2wk install</div></div>
+    <div class="num-row"><div class="num-label">Section Ref</div><div class="num-sample">§12 64 13, Part 2.12.A.1</div></div>
+  </div>
+
+  <div class="font-col avenir">
+    <div class="font-tag">Avenir Next</div>
+    <div class="num-row"><div class="num-label">Price</div><div class="num-sample">$14,850.00</div></div>
+    <div class="num-row"><div class="num-label">Dimensions</div><div class="num-sample">48"W × 48"D × 96"H</div></div>
+    <div class="num-row"><div class="num-label">Part Number</div><div class="num-sample">POPS-ONE-167601-A3</div></div>
+    <div class="num-row"><div class="num-label">Specs</div><div class="num-sample">STC 35+ | NRC 0.75 | 16 ga | 1,250 lbs</div></div>
+    <div class="num-row"><div class="num-label">Timeline</div><div class="num-sample">30d prototype → 90–120d mfg → 1–2wk install</div></div>
+    <div class="num-row"><div class="num-label">Section Ref</div><div class="num-sample">§12 64 13, Part 2.12.A.1</div></div>
+  </div>
+
+  <div class="font-col inter">
+    <div class="font-tag">Inter</div>
+    <div class="num-row"><div class="num-label">Price</div><div class="num-sample">$14,850.00</div></div>
+    <div class="num-row"><div class="num-label">Dimensions</div><div class="num-sample">48"W × 48"D × 96"H</div></div>
+    <div class="num-row"><div class="num-label">Part Number</div><div class="num-sample">POPS-ONE-167601-A3</div></div>
+    <div class="num-row"><div class="num-label">Specs</div><div class="num-sample">STC 35+ | NRC 0.75 | 16 ga | 1,250 lbs</div></div>
+    <div class="num-row"><div class="num-label">Timeline</div><div class="num-sample">30d prototype → 90–120d mfg → 1–2wk install</div></div>
+    <div class="num-row"><div class="num-label">Section Ref</div><div class="num-sample">§12 64 13, Part 2.12.A.1</div></div>
+  </div>
+</div>
+
+<div class="page-footer">
+  POPS — Font Comparison · IBM Plex Sans vs Avenir Next vs Inter · March 2026
+</div>
+
+</body>
+</html>
